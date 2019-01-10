@@ -1,0 +1,23 @@
+<div class="row">
+    <div class="col-md-4 col-12 p-0 text-center">
+        <h3>My hamburgers!</h1>
+        {{#each burgers}}
+            {{#unless devoured}}
+                {{> burgers/burger-block devoured=false}}
+            {{/unless}}
+        {{/each}}
+    </div>
+    <div class="col-md-4 col-12 p-2 text-center">
+        <img class="img-fluid py-1" src="/assets/img/burger.png">
+        <textarea id="burgerText" style="width:100%" rows="4"></textarea>
+        <button id="addBurgerBtn" class="btn btn-primary">Submit!</button>
+    </div>
+    <div class="col-md-4 col-12 p-0 mt-md-0 mt-4 text-center">
+        <h3>Devoured!</h3>
+        {{#each burgers}}
+            {{#if devoured}}
+                {{> burgers/burger-block devoured=true}}
+            {{/if}}
+        {{/each}}
+    </div>
+</div>

@@ -1,0 +1,11 @@
+.row{
+    width: 100%;
+    margin: 0px !important;
+}
+
+.burgerContainer{
+    background-color: lightskyblue;
+    border-radius: 10px;
+    width: 100%;
+    height: 85px;
+}
