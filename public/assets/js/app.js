@@ -1,27 +1,26 @@
-$(document).ready(function(){
-    
-    $("#addBurgerBtn").on("click", function(){
-        var burgerText = $("#burgerText").val();
-        if (burgerText){
-            $.ajax("/api/newBurger",{
+$(document).ready(function () {
+
+    $("#addBurgerBtn").on("click", function () {
+        var burger = {
+            burgerName: $("#burgerText").val(),
+            devoured: false
+        }
+        if (burgerText) {
+            $.ajax("/api/newBurger", {
                 type: "POST",
-                data: {burgerName: burgerText}
-            }).then(
-                function(data){
-                    if (data){
-                        location.assign("/");
-                    }
-                }
-            );
-        } 
+                data: burger
+            }).then(data => {if(!data) location.assign("/")});
+        }
     });
 
-    $(".devourBtn").on("click", function(){
-        var id = $(this).attr("data-id");
-        $.ajax("/api/devour/",{
+    $(".devourBtn").on("click", function () {
+        var burger = {
+            devoured: true
+        }
+        $.ajax("/api/devour/" + $(this).attr("data-id"), {
             type: "PUT",
-            data:{id}
-        }).then(function(){
+            data: burger
+        }).then(function () {
             location.assign("/");
         })
     });

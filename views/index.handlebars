@@ -3,7 +3,7 @@
         <h3>My hamburgers!</h1>
         {{#each burgers}}
             {{#unless devoured}}
-                {{> burgers/burger-block devoured=false}}
+                {{> burgers/burger-block this}}
             {{/unless}}
         {{/each}}
     </div>
@@ -16,7 +16,7 @@
         <h3>Devoured!</h3>
         {{#each burgers}}
             {{#if devoured}}
-                {{> burgers/burger-block devoured=true}}
+                {{> burgers/burger-block this}}
             {{/if}}
         {{/each}}
     </div>

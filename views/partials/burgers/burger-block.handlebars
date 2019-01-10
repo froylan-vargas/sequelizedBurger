@@ -1,17 +1,17 @@
 <div class="row burgerContainer py-3" style="margin-bottom: 20px !important">
     {{#if devoured}}
     <div class="col-12">
-        <span>{{burger_name}}</span>
+        <span>{{this.burgerName}}</span>
     </div>
     {{/if}}
 
     {{#unless devoured}}
     <div class="col-7 p-1">
-        <span>{{burger_name}}</span>
+        <span>{{this.burgerName}}</span>
     </div>
 
     <div class="col-5 p-0">
-        <button data-id="{{id}}" style="font-size:12px" class="devourBtn btn btn-success">Devour it!</button>
+        <button data-id="{{this.id}}" style="font-size:12px" class="devourBtn btn btn-success">Devour it!</button>
     </div>
 
     {{/unless}}

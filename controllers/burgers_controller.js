@@ -2,32 +2,27 @@ var express = require("express");
 
 var router = express.Router();
 
-var burger = require("../models/burger.js");
+var db = require("../models");
 
 router.get("/", function (req, res) {
-    burger.getAll(function (data) {
-        res.render("index", { burgers: data });
+    db.Burger.findAll({}).then(burgers => {
+        console.log(burgers);
+        res.render("index", { burgers : burgers });
     })
 })
 
 router.post("/api/newBurger", function (req, res) {
-    var burgerName = req.body.burgerName;
-    burger.insertBurger(burgerName, function (result) {
-        console.log(result);
-        res.json({ id: result.insertId });
-    });
+    db.Burger.create(req.body)
+        .then(()=>res.end())
+        .catch(err=>console.log(err));
 })
 
-router.put("/api/devour/", function (req, res) {
-    console.log("Im here");
-    var id = req.body.id;
-    burger.updateBurger(id, true, function (result) {
-        if (result.changedRows == 0) {
-            return res.status(404).end();
-        } else {
-            res.status(200).end();
-        }
-    });
+router.put("/api/devour/:id", function (req, res) {
+    db.Burger.update(req.body, { where : {
+        id : req.params.id
+    }})
+        .then(()=> res.end())
+        .catch(err=>res.json(err))
 })
 
 module.exports = router;
