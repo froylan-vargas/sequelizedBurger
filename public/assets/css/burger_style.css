@@ -9,3 +9,20 @@
     width: 100%;
     height: 85px;
 }
+
+#addCustomer{
+    width: 100%;
+    border: 1px solid blue;
+}
+
+.customerContainer{
+    background-color: steelblue;
+    border-radius: 15px;
+    padding: 20px 0px;
+    color: white;
+}
+
+.hamburgersHeader{
+    height: 66px;
+    margin-bottom: 15px;
+}

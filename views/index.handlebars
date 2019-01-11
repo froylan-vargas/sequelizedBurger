@@ -1,23 +1,39 @@
-<div class="row">
-    <div class="col-md-4 col-12 p-0 text-center">
-        <h3>My hamburgers!</h1>
-        {{#each burgers}}
-            {{#unless devoured}}
-                {{> burgers/burger-block this}}
-            {{/unless}}
-        {{/each}}
+<div class="mb-3 jumbotron text-center jumbotron-fluid">
+  <div class="container">
+    <h1 class="display-4">Welcome to Froy's Bistro</h1>
+  </div>
+</div>
+
+<div id="addCustomer" class="mb-3 p-3 text-center">
+    <h3>Customers</h3>
+    <h4>Add a new customer</h4>
+    <div class="row">
+        <div class="col-md-10 col-12">
+            <span>Customer Name: </span>
+            <input id="customerName">
+        </div>
+        <div class="col-md-2 mt-md-0 mt-3 col-12">
+            <button id="addCustomerBtn" class="btn btn-primary">Add!</button>
+        </div>
     </div>
-    <div class="col-md-4 col-12 p-2 text-center">
-        <img class="img-fluid py-1" src="/assets/img/burger.png">
-        <textarea id="burgerText" style="width:100%" rows="4"></textarea>
-        <button id="addBurgerBtn" class="btn btn-primary">Submit!</button>
-    </div>
-    <div class="col-md-4 col-12 p-0 mt-md-0 mt-4 text-center">
-        <h3>Devoured!</h3>
-        {{#each burgers}}
-            {{#if devoured}}
-                {{> burgers/burger-block this}}
-            {{/if}}
-        {{/each}}
+</div>
+
+<div id="customers">
+    <div class="row">
+        <div class="col-12">
+            {{#each customers}}
+                <div class="row customerContainer text-center" style="margin-bottom:15px!important">
+                    <div class="col-6">
+                        <span>{{name}}</span>
+                    </div>
+                    <div class="col-4">
+                        <button data-id="{{id}}" class="hamburgersButton btn btn-warning">View hamburgers</button>
+                    </div>
+                    <div class="col-2">
+                        <button data-id="{{id}}" class="deleteHamburgerBtn btn btn-danger">X</button>
+                    </div>
+                </div>
+            {{/each}}
+        </div>
     </div>
 </div>
